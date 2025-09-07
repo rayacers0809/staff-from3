@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>끼리끼리 경찰청 지원서</title>
+  <style>
+    body {
+      font-family: 'Pretendard','Noto Sans KR',sans-serif;
+      background: linear-gradient(135deg,#f0f4fa,#e6ecf5);
+      margin: 0; padding: 0;
+      color: #222;
+    }
+
+    /* ===== 헤더 ===== */
+    header {
+      background: linear-gradient(135deg, #163d7a, #1f4e9e);
+      color: #fff;
+      padding: 40px 20px 30px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    header::after {
+      content: "";
+      display: block;
+      height: 4px;
+      width: 100%;
+      background: linear-gradient(to right, #ffc107, #f8f9fa, #ffc107);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    header .logo {
+      height: 90px;
+      margin-bottom: 15px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4), 0 0 3px #fff;
+      letter-spacing: -0.5px;
+    }
+
+    /* ===== 메인 ===== */
+    main {
+      width: 100%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    section {
+      background: #fff;
+      border-radius: 14px;
+      padding: 30px 25px; /* ✅ 좌우 여백 강화 */
+      margin-bottom: 35px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #1a3c7a;
+      border-left: 6px solid #1a3c7a;
+      padding-left: 12px;
+    }
+
+    /* ===== 폼 ===== */
+    .form-group { margin-top: 20px; }
+    .form-group label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .required { color: #d93025; margin-left: 4px; }
+
+    input[type="text"],input[type="email"],input[type="number"],textarea {
+      width: 100%;
+      max-width: 100%;       /* ✅ 부모 안에서 넘치지 않도록 */
+      box-sizing: border-box;/* ✅ border/padding 포함 계산 */
+      padding: 14px 16px;
+      border: 1.8px solid #d0d7e2;
+      border-radius: 10px;
+      font-size: 15px;
+      background: #fafbfd;
+      transition: all 0.25s;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    }
+    input:focus,textarea:focus {
+      border-color: #2b57b3;
+      box-shadow: 0 0 6px rgba(43,87,179,0.2);
+      background: #fff;
+      outline: none;
+    }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* ===== 라디오 버튼 카드 ===== */
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .radio-card {
+      position: relative;
+      flex: 0 1 120px;
+    }
+    .radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .radio-card span {
+      display: block;
+      padding: 12px;
+      border: 2px solid #d0d7e2;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      background: #fafbfd;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .radio-card:hover span {
+      border-color: #1a3c7a;
+      background: #f0f5ff;
+    }
+    .radio-card input:checked + span {
+      border-color: #1a3c7a;
+      background: #1a3c7a;
+      color: #fff;
+    }
+
+    /* ===== 버튼 ===== */
+    button {
+      display: block;
+      margin: 40px auto 0;
+      background: linear-gradient(135deg,#1a3c7a,#2b57b3);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 16px 45px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    button:hover { 
+      background: #274c9a; 
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <!-- 경찰청 독수리 로고 -->
+    <img src="https://mblogthumb-phinf.pstatic.net/MjAyMzA2MjJfMTQy/MDAxNjg3MzY2OTU0MTI5.q5g2CNZtaxpM0b0QX0GjWZuVNHUubwmQfsUgBFpXuBEg.RRkO9X4EKLlcvhE9Eh2VBQh6ofuKjGwvHcOk10R-gT0g.PNG.ho1980326/%EA%B2%BD%EC%B0%B0%EB%A1%9C%EA%B3%A02.png?type=w800" 
+         alt="경찰청 로고" class="logo">
+    <h1>끼리끼리 경찰청 지원서</h1>
+  </header>
+
+  <main>
+    <form id="applyForm">
+      <!-- 기본 정보 -->
+      <section>
+        <h2>📑 기본 정보</h2>
+        <div class="form-group"><label>① 이메일 <span class="required">*</span></label><input type="email" name="이메일" required></div>
+        <div class="form-group"><label>② 닉네임 / 고유번호 <span class="required">*</span></label><input type="text" name="닉네임" required></div>
+        <div class="form-group"><label>③ 본인 나이 <span class="required">*</span></label><input type="number" name="나이" required></div>
+        <div class="form-group"><label>④ 신분증·학생증 제출 가능 여부 <span class="required">*</span></label><input type="text" name="신분증제출" required></div>
+        <div class="form-group">
+          <label>⑤ 성별 <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card"><input type="radio" name="성별" value="남자" required><span>남자</span></label>
+            <label class="radio-card"><input type="radio" name="성별" value="여자"><span>여자</span></label>
+          </div>
+        </div>
+        <div class="form-group"><label>⑥ 녹화 프로그램 사용 여부 <span class="required">*</span></label><input type="text" name="녹화프로그램" required></div>
+        <div class="form-group"><label>⑦ FiveM 서버 경력 및 팩션 경험 <span class="required">*</span></label><textarea name="경력" required></textarea></div>
+        <div class="form-group"><label>⑧ 평일·주말 접속 시간</label><textarea name="접속시간"></textarea></div>
+        <div class="form-group"><label>⑨ 관리자 경고 횟수 및 사유 <span class="required">*</span></label><textarea name="경고" required></textarea></div>
+      </section>
+
+      <!-- RP 및 능력 평가 -->
+      <section>
+        <h2>🎭 RP 및 능력 평가</h2>
+        <div class="form-group">
+          <label>⑩ RP 이해도 <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card"><input type="radio" name="RP이해도" value="상" required><span>상</span></label>
+            <label class="radio-card"><input type="radio" name="RP이해도" value="중"><span>중</span></label>
+            <label class="radio-card"><input type="radio" name="RP이해도" value="하"><span>하</span></label>
+          </div>
+        </div>
+        <div class="form-group"><label>⑪ RP 정의 및 예시 5가지 <span class="required">*</span></label><textarea name="RP정의" required></textarea></div>
+        <div class="form-group"><label>⑫ Bad-RP 정의 및 예시 5가지 <span class="required">*</span></label><textarea name="BadRP" required></textarea></div>
+        <div class="form-group"><label>⑬ Non-RP 정의 및 예시 5가지 <span class="required">*</span></label><textarea name="NonRP" required></textarea></div>
+        <div class="form-group"><label>⑭ OOC 이란? <span class="required">*</span></label><textarea name="OOC" required></textarea></div>
+        <div class="form-group"><label>⑮ IC 이란? <span class="required">*</span></label><textarea name="IC" required></textarea></div>
+        <div class="form-group"><label>⑯ 메타게이밍 정의 및 예시 3가지 <span class="required">*</span></label><textarea name="메타게이밍" required></textarea></div>
+        <div class="form-group"><label>⑰ 파워게이밍 정의 및 예시 3가지 <span class="required">*</span></label><textarea name="파워게이밍" required></textarea></div>
+        <div class="form-group">
+          <label>⑱ 사건처리 능력 <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card"><input type="radio" name="사건처리" value="상" required><span>상</span></label>
+            <label class="radio-card"><input type="radio" name="사건처리" value="중"><span>중</span></label>
+            <label class="radio-card"><input type="radio" name="사건처리" value="하"><span>하</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>⑲ 총기 실력 <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card"><input type="radio" name="총기실력" value="상" required><span>상</span></label>
+            <label class="radio-card"><input type="radio" name="총기실력" value="중"><span>중</span></label>
+            <label class="radio-card"><input type="radio" name="총기실력" value="하"><span>하</span></label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>⑳ 운전 실력 <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-card"><input type="radio" name="운전실력" value="상" required><span>상</span></label>
+            <label class="radio-card"><input type="radio" name="운전실력" value="중"><span>중</span></label>
+            <label class="radio-card"><input type="radio" name="운전실력" value="하"><span>하</span></label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 지원 동기 -->
+      <section>
+        <h2>📝 지원 동기 및 유의사항</h2>
+        <div class="form-group"><label>㉑ 지원 동기 <span class="required">*</span></label><input type="text" name="지원동기" required></div>
+        <div class="form-group"><label>㉒ 합격 후 포부 <span class="required">*</span></label><textarea name="포부" required></textarea></div>
+        <div class="form-group"><label>㉓ 유의사항 확인 <span class="required">*</span></label><textarea name="유의사항" required></textarea></div>
+      </section>
+
+      <button type="submit">지원서 제출</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById("applyForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const fields = [];
+      for (let [key, value] of data.entries()) {
+        fields.push({ name: key, value: value });
+      }
+
+      const payload = {
+        username: "경찰청 지원서",
+        embeds: [{
+          title: "🚓 새로운 경찰청 지원서 접수",
+          color: 3447003,
+          fields: fields.map(f => ({
+            name: f.name,
+            value: f.value || "-",
+            inline: false
+          }))
+        }]
+      };
+
+      await fetch("https://ptb.discord.com/api/webhooks/1414281994723922151/d_-qMlcD_Cp0RW_a6UEifsrej3DDkYQTIhiuHHKfHlYlskpKR12XhusEsbwDeC9pX8wr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      alert("지원서가 성공적으로 제출되었습니다!");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
