@@ -1,118 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Jua', sans-serif;
+      background: #0e0e10;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 15px;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Jua', sans-serif;
-  background: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 15px;
-}
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 850px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      overflow: hidden;
+      z-index: 0;
+    }
 
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 850px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-  overflow: hidden;
-  z-index: 0;
-}
+    /* LED 네온 테두리 효과 */
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 4px;
+      background: linear-gradient(270deg, #ff0080, #7928ca, #00c3ff, #00ff9d, #ff0080);
+      background-size: 400% 400%;
+      animation: ledGlow 6s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-/* 🌈 LED 네온 테두리 */
-.container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  padding: 4px;
-  background: linear-gradient(270deg, #ff0080, #7928ca, #00c3ff, #00ff9d, #ff0080);
-  background-size: 400% 400%;
-  animation: ledGlow 6s linear infinite;
-  -webkit-mask: linear-gradient(#000000 0 0) content-box, linear-gradient(#000000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: -1;
-}
+    @keyframes ledGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-@keyframes ledGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    .header {
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 16px 16px 0 0;
+    }
+    .header h1 { margin: 0; font-size: 32px; }
+    .header p { margin-top: 10px; font-size: 15px; opacity: 0.9; }
+    form { padding: 30px; }
+    .form-group { margin-bottom: 25px; }
+    label { font-size: 16px; font-weight: bold; display: block; margin-bottom: 8px; }
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus {
+      border-color: #8e2de2; outline: none;
+      box-shadow: 0 0 8px rgba(142,45,226,0.4);
+    }
+    textarea { resize: vertical; min-height: 100px; }
 
-.header {
-  background: linear-gradient(135deg, #ffa162, #feffaf);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  border-radius: 16px 16px 0 0;
-}
+    /* 라디오/체크박스 가로 정렬 */
+    .radio-group, .check-group {
+      display: flex;
+      gap: 40px;  /* 버튼 간격 */
+      margin-top: 10px;
+    }
+    .radio-group label, .check-group label {
+      font-weight: normal;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap; /* 줄바꿈 방지 */
+    }
 
-.header h1 { margin: 0; font-size: 32px; }
-.header p { margin-top: 10px; font-size: 15px; opacity: 0.9; }
-
-form { padding: 30px; }
-
-.section-title {
-  font-size: 20px;
-  margin: 35px 0 15px;
-  padding-bottom: 8px;
-  border-bottom: 3px solid #000000;
-  color: #ff9fea;
-}
-
-.form-group { margin-bottom: 25px; }
-
-label { font-size: 15px; font-weight: bold; margin-bottom: 6px; display: block; }
-
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-
-textarea { resize: vertical; min-height: 80px; }
-
-/* 라디오 버튼 가로 정렬 */
-.radio-group {
-  display: flex;
-  flex-direction: row;   /* ✅ 가로 배치 강제 */
-  align-items: center;
-  gap: 40px;             /* 버튼 간격 */
-  margin-top: 6px;
-}
-
-.radio-group label {
-  display: inline-flex !important; /* ✅ 블록 대신 인라인 */
-  align-items: center;
-  gap: 6px;
-  font-weight: normal;
-  white-space: nowrap;   /* ✅ 줄바꿈 방지 */
-}
-
-button {
-  width: 100%;
-  padding: 16px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: bold;
-  background: linear-gradient(135deg, #ff512f, #dd2476);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-button:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
+    .section-title {
+      font-size: 20px; margin: 35px 0 15px;
+      padding-bottom: 8px; border-bottom: 3px solid #8e2de2; color: #4a00e0;
+    }
+    button {
+      width: 100%; padding: 16px;
+      border: none; border-radius: 14px;
+      font-size: 18px; font-weight: bold;
+      background: linear-gradient(135deg, #ff512f, #dd2476);
+      color: white; cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background: linear-gradient(135deg, #dd2476, #ff512f);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    }
